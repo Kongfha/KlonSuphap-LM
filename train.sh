@@ -1,4 +1,4 @@
-!python3 train.py --mask False \
+python3 train.py --mask False \
                  --train_path ./Tagged_Dataset/valid_data_one_tag.json \
                  --val_path ./Tagged_Dataset/valid_data_one_tag.json \
                  --tokenizer_path Kongfha/KlonSuphap-LM \
