@@ -16,7 +16,7 @@ Visit Huggingface Model Card -> [Kongfha/KlonSuphap-LM](https://huggingface.co/K
 ## Introduction
 This repository contains the code for training KlonSuphap-LM, a language model specialized in generating Thai Klon-Paed Poems.
 
-The goal of this project is to train a Language Model for Thai Klon-Paed Poem generation, with a focus on ensuring that the model can accurately generate poems with correct rhyming patterns.
+The goal of this project is to train a Language Model for Thai Klon-Paed Poem generation, with a focus on ensuring that the model can accurately generate poems with correct rhyming patterns without using additional pipelines.
 
 ## Training Process 
 
@@ -89,7 +89,7 @@ python3 train_RL.py --observation_path ./path/to/observation_list.json \
                     --minibatch_size MINI_BATCH_SIZE \
                     --epochs NUMBER_OF_EPOCHS \
                     --save_path ./path/to/save 
-                    # saved model will be ./path/to/save /{step}_finish and ./path/to/save /best
+                    # saved model will be ./path/to/save/{step}_finish and ./path/to/save/best
 
 # Dump saved model to Huggingface format
 python3 dump_RL.py  --model ./path/to/model \
