@@ -25,8 +25,8 @@ print("-----Loading Materials-----")
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-pretrain_tokenizer_path = "Kongfha/KlonSuphap-LM"
-pretrain_model_path = "Kongfha/KlonSuphap-LM"
+pretrain_tokenizer_path = args.tokenizer_path
+pretrain_model_path = args.pretrained_path
 
 print(f"Loading tokenizer and model from \"{pretrain_model_path}\" and \"{pretrain_tokenizer_path}\"")
 tokenizer = AutoTokenizer.from_pretrained(pretrain_tokenizer_path)
@@ -35,7 +35,7 @@ tokenizer.pad_token = tokenizer.eos_token
 model = AutoModelForCausalLM.from_pretrained(pretrain_model_path)
 model.to(device)
 
-observation_list_path = "Tagged_Dataset/observation_list.json"
+observation_list_path = args.observation_path
 print(f"Loading Observation List from \"{observation_list_path}\"")
 with open(observation_list_path) as f:
     observation_list = json.load(f)
@@ -48,23 +48,23 @@ if __name__ == "__main__":
                     temperature=1.5,
                     top_k=0,
                     top_p=0.4)
+    update_interval = args.update_interval
+    minibatch_size = args.minibatch_size
+    epochs = args.epochs
     agent = actor.agent_ppo(update_interval=800*2, minibatch_size=1000, epochs=50)
-    print("update_interval=800*2, minibatch_size=1000, epochs=50")
-    steps = 800*100*30
+    print(f"update_interval={update_interval}, minibatch_size={minibatch_size}, epochs={epochs}")
 
+    steps = args.steps
+    save_path = args.save_path
     print(f"-----Training Agent {steps} steps-----")
+    print(f"Creating model directory to {save_path}")
     train_agent_with_evaluation(agent,
                                 env,
                                 steps=steps, #50 steps ~= 1 line
                                 eval_n_steps=800*2,
                                 eval_n_episodes=None,
                                 eval_interval=800*5,
-                                outdir='RL_one_obj_8_4_48_2waks_8hrs',
+                                outdir=save_path,
                                 train_max_episode_len = 50,
                                 eval_max_episode_len = 50
                                 )
-
-    agent.load("RL_one_obj_8_4_48_2waks_8hrs/best")  # loading the best model
-    inp = "สามหาว"
-    output = actor.predict({"input":inp})
-    print(inp+output[0])
