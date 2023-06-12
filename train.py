@@ -22,7 +22,6 @@ parser.add_argument('--save_path',metavar='SAVE-PATH', type = str, default=".", 
 
 args = parser.parse_args()
 
-
 torch.cuda.empty_cache()
 
 print("-----Loading Materials-----")
@@ -38,14 +37,16 @@ tokenizer.pad_token = tokenizer.eos_token
 
 model = AutoModelForCausalLM.from_pretrained(pretrain_model_path)
 model.to(device)
-    
+
+mask = args.mask
+
 train_data_path = args.train_path
 print(f"Loading train data from \"{train_data_path}\"")
-train_dataset = KlonSuphapDataset(train_data_path, tokenizer, max_length=600)
+train_dataset = KlonSuphapDataset(train_data_path, tokenizer, max_length=600, mask = mask)
 
 valid_data_path = args.val_path
 print(f"Loading valid data from \"{valid_data_path}\"")
-valid_dataset = KlonSuphapDataset(valid_data_path, tokenizer, max_length=600)
+valid_dataset = KlonSuphapDataset(valid_data_path, tokenizer, max_length=600, mask = mask)
 
 BATCH_SIZE = args.batch_size
 print(f"Preparing data loader with batch size = {BATCH_SIZE}")
