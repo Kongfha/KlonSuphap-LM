@@ -1,5 +1,6 @@
 from utils.word_check import format_str_waks, format_waks_syl, sumpass_score
 from textrl import TextRLEnv
+import sys
 
 def get_score(txt,cur_states):
     reward = 0
@@ -37,7 +38,6 @@ def get_score(txt,cur_states):
 class KlonRLEnv(TextRLEnv):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.reward_tokenizer = tokenizer
         self.cur_states = { "klon_len_error_count" : 0,
                             "word_seg_fail_count" : 0,
                             "less_than_two_wak_count" : 0,
@@ -48,7 +48,7 @@ class KlonRLEnv(TextRLEnv):
         reward = 0
 
         if finish or len(predicted_list[0]) >= self.env_max_length:
-            predicted_text = self.reward_tokenizer.convert_tokens_to_string(predicted_list[0])
+            predicted_text = self.tokenizer.convert_tokens_to_string(predicted_list[0])
             all_text = input_item["input"]+predicted_text
 
             reward = get_score(all_text, self.cur_states)
@@ -57,9 +57,9 @@ class KlonRLEnv(TextRLEnv):
             self.cur_states["reward_cnts"] += 1      
 
             if len(self.cur_states["deque"]) < 50:
-                print(f'{self.cur_states["reward_cnts"]} | cur_reward: {reward} | len_error: {self.cur_states["klon_len_error_count"]} | wak_error: {self.cur_states["less_than_two_wak_count"]} | seg_fail : {self.cur_states["word_seg_fail_count"]} |', end="\r")
+                sys.stdout.write('\r' + f'{self.cur_states["reward_cnts"]} | cur_reward: {reward} | len_error: {self.cur_states["klon_len_error_count"]} | wak_error: {self.cur_states["less_than_two_wak_count"]} | seg_fail : {self.cur_states["word_seg_fail_count"]} |')
             else:
-                print(f'{self.cur_states["reward_cnts"]} | cur_reward: {reward} | last_50_average: {sum(self.cur_states["deque"])/50} | len_error: {self.cur_states["klon_len_error_count"]} | wak_error: {self.cur_states["less_than_two_wak_count"]} | seg_fail : {self.cur_states["word_seg_fail_count"]} |', end="\r")
+                sys.stdout.write('\r' + f'{self.cur_states["reward_cnts"]} | cur_reward: {reward} | last_50_average: {sum(self.cur_states["deque"])/50} | len_error: {self.cur_states["klon_len_error_count"]} | wak_error: {self.cur_states["less_than_two_wak_count"]} | seg_fail : {self.cur_states["word_seg_fail_count"]} |')
                 self.cur_states["deque"].pop(0)
 
         return [reward]
