@@ -1,0 +1,7 @@
+re
+json
+argparse
+torch~=2
+transformer~=4.24
+tltk~=1.6
+pfrl@git+https://github.com/voidful/pfrl.git
