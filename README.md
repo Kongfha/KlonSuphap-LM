@@ -50,7 +50,7 @@ depiction of Thai Klon-Paed Poems, it still does not adhere to the rules of Thai
    &ensp;&ensp;TextRL will repeatedly feed text inputs from the observation list to the model and calculate the reward using my ***Klon-Paed Grader***, then update the model's weights based on rewards it recieved.
 
 ## Limitation
-&ensp;&ensp; The current training process uses <s2> and <es2> tags for inner rhyme (สัมผัสภายในบท) and <s3> tag for outer rhyme (สัมผัสระหว่างบท). However, the model tends to prioritize learning inner rhyme, likely due to the higher quantity of <s2> and <es2> tags compared to <s3> tags. The reinforcement learning method used in training focuses on generating a single line of a poem, resulting in only one pair of <s2> and <es2> tags, potentially overshadowing the significance of <s3> tags in the model's learning.
+The current training process uses <s2> and <es2> tags for inner rhyme (สัมผัสภายในบท) and <s3> tag for outer rhyme (สัมผัสระหว่างบท). However, the model tends to prioritize learning inner rhyme, likely due to the higher quantity of <s2> and <es2> tags compared to <s3> tags. The reinforcement learning method used in training focuses on generating a single line of a poem, resulting in only one pair of <s2> and <es2> tags, potentially overshadowing the significance of <s3> tags in the model's learning.
 
 ## Usage
 
