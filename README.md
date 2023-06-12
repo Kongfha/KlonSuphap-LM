@@ -6,11 +6,15 @@ Visit Huggingface Model Card -> [Kongfha/KlonSuphap-LM](https://huggingface.co/K
 ## Table of Contents
 - [Introduction](#introductionIntroduction)
 - [Training Process](#training-process)
+- [Limitation](#limitation)
+- [Usage](#usage)
+    - [Fine-Tuning without non-rhyme-related mask](#fine-tuning-without-non-rhyme-related-mask)
+    - [Fine-Tuning with non-rhyme-related mask](#fine-tuning-with-non-rhyme-related-mask)
+    - [Fine-Tuning using Reinforcement Learning](#fine-tuning-using-reinforcement-learning)
+    - [Generate Klon-Paed using Pretrained Model](#generate-klon-paed-using-pretrained-model)
 
 ## Introduction
-This repository is created to store the code for training KlonSuphap-LM for Thai Klon-Paed Poem generation.
-
-Klon-Paed Poem is a kind of Thai Poem
+This repository contains the code for training KlonSuphap-LM, a language model specialized in generating Thai Klon-Paed Poems.
 
 The goal of this project is to train a Language Model for Thai Klon-Paed Poem generation, with a focus on ensuring that the model can accurately generate poems with correct rhyming patterns.
 
@@ -46,7 +50,7 @@ depiction of Thai Klon-Paed Poems, it still does not adhere to the rules of Thai
    &ensp;&ensp;TextRL will repeatedly feed text inputs from the observation list to the model and calculate the reward using my ***Klon-Paed Grader***, then update the model's weights based on rewards it recieved.
 
 ## Limitation
-The current training process uses <s2> and <es2> tags for inner rhyme (สัมผัสภายในบท) and <s3> tag for outer rhyme (สัมผัสระหว่างบท). However, the model tends to prioritize learning inner rhyme, likely due to the higher quantity of <s2> and <es2> tags compared to <s3> tags. The reinforcement learning method used in training focuses on generating a single line of a poem, resulting in only one pair of <s2> and <es2> tags, potentially overshadowing the significance of <s3> tags in the model's learning.
+&ensp;&ensp; The current training process uses <s2> and <es2> tags for inner rhyme (สัมผัสภายในบท) and <s3> tag for outer rhyme (สัมผัสระหว่างบท). However, the model tends to prioritize learning inner rhyme, likely due to the higher quantity of <s2> and <es2> tags compared to <s3> tags. The reinforcement learning method used in training focuses on generating a single line of a poem, resulting in only one pair of <s2> and <es2> tags, potentially overshadowing the significance of <s3> tags in the model's learning.
 
 ## Usage
 
