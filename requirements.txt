@@ -1,7 +1,7 @@
 argparse
 torch
 transformers
-tltk~=1.6
+tltk
 pfrl@git+https://github.com/voidful/pfrl.git
 textrl
 tqdm
