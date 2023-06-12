@@ -51,7 +51,7 @@ if __name__ == "__main__":
     update_interval = args.update_interval
     minibatch_size = args.minibatch_size
     epochs = args.epochs
-    agent = actor.agent_ppo(update_interval=800*2, minibatch_size=1000, epochs=50)
+    agent = actor.agent_ppo(update_interval=update_interval, minibatch_size=minibatch_size, epochs=epochs)
     print(f"update_interval={update_interval}, minibatch_size={minibatch_size}, epochs={epochs}")
 
     steps = args.steps
