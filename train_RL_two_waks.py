@@ -10,6 +10,7 @@ global word_seg_fail_count
 global less_than_two_wak_count
 global reward_cnts 
 global deque 
+global tokenizer
 
 klon_len_error_count = 0
 word_seg_fail_count = 0
