@@ -1,6 +1,7 @@
 argparse
 torch
 transformers
+scikit-learn
 tltk
 pfrl@git+https://github.com/voidful/pfrl.git
 textrl
