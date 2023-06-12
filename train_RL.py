@@ -5,18 +5,21 @@ import json
 
 from utils.klon_rl_env import KlonRLEnv
 
-global klon_len_error_count
-global word_seg_fail_count
-global less_than_two_wak_count
-global reward_cnts 
-global deque 
-global tokenizer
+import argparse
 
-klon_len_error_count = 0
-word_seg_fail_count = 0
-less_than_two_wak_count = 0
-reward_cnts = 0
-deque = []
+parser = argparse.ArgumentParser(description='use the model')
+
+parser.add_argument('--observation_path', metavar="OBS-PATH", type=str, required=True, help="observation list dataset path")
+parser.add_argument('--tokenizer_path', metavar="TOKEN-PATH", type =str, required=True, help="tokenizer path")
+parser.add_argument('--pretrained_path', metavar="PRE-PATH", required=True, help="pretrained model path")
+parser.add_argument('--steps',metavar='NUM-STEP', type=int, required=True, help="number of steps")
+parser.add_argument('--update_interval',metavar='UPDATE-INTERVAL', type=int, required=True)
+parser.add_argument('--minibatch_size',metavar='MBATCH-SIZE', type=int, required=True)
+parser.add_argument('--epochs',metavar='NUM-EPOCH', type=int, required=True, help="number of epochs")
+parser.add_argument('--save_path',metavar='SAVE-PATH', type = str, default=".", help="saving path for model and tokenizer")
+
+args = parser.parse_args()
+
 
 print("-----Loading Materials-----")
 
@@ -65,4 +68,3 @@ if __name__ == "__main__":
     inp = "สามหาว"
     output = actor.predict({"input":inp})
     print(inp+output[0])
-
