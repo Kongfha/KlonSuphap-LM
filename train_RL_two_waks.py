@@ -5,6 +5,12 @@ import json
 
 from utils.klon_rl_env import KlonRLEnv
 
+global klon_len_error_count
+global word_seg_fail_count
+global less_than_two_wak_count
+global reward_cnts 
+global deque 
+
 klon_len_error_count = 0
 word_seg_fail_count = 0
 less_than_two_wak_count = 0

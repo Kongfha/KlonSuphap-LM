@@ -4,3 +4,4 @@ transformers
 tltk~=1.6
 pfrl@git+https://github.com/voidful/pfrl.git
 textrl
+tdqm
