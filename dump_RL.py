@@ -1,4 +1,4 @@
-# code from voidful/TextRL/textrl/dump.py
+# Original code from voidful/TextRL/textrl/dump.py
 
 import argparse
 import sys
