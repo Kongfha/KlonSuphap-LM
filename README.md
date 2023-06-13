@@ -65,7 +65,7 @@ python3 tag_data.py --raw_path ./path/to/raw_text.json \
 ```bash
 python3 train.py --mask False \
                  --train_path ./path/to/train_data.json \
-                 --val_path path/to/valid_data.json \
+                 --val_path ./path/to/valid_data.json \
                  --tokenizer_path ./path/to/tokenizer \
                  --pretrained_path ./path/to/model \
                  --batch_size BATCH_SIZE \
@@ -77,7 +77,7 @@ python3 train.py --mask False \
 ```bash
 python3 train.py --mask True \
                  --train_path ./path/to/train_data.json \
-                 --val_path path/to/valid_data.json \
+                 --val_path ./path/to/valid_data.json \
                  --tokenizer_path ./path/to/tokenizer \
                  --pretrained_path ./path/to/model \
                  --batch_size BATCH_SIZE \
