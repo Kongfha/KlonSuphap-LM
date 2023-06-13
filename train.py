@@ -8,7 +8,7 @@ from utils.train_functions import train, eval
 
 import argparse
 
-parser = argparse.ArgumentParser(description='use the model')
+parser = argparse.ArgumentParser(description='Train the model')
 
 parser.add_argument('--mask', metavar="MASK", type=bool, required=True, help="apply mask on non-rhyme-related data")
 parser.add_argument('--train_path', metavar="TRAIN-PATH", type=str, required=True, help="training dataset path")

@@ -7,16 +7,16 @@ from utils.klon_rl_env import KlonRLEnv
 
 import argparse
 
-parser = argparse.ArgumentParser(description='use the model')
+parser = argparse.ArgumentParser(description='Train RL model')
 
 parser.add_argument('--observation_path', metavar="OBS-PATH", type=str, required=True, help="observation list dataset path")
 parser.add_argument('--tokenizer_path', metavar="TOKEN-PATH", type =str, required=True, help="tokenizer path")
 parser.add_argument('--pretrained_path', metavar="PRE-PATH", required=True, help="pretrained model path")
 parser.add_argument('--steps',metavar='NUM-STEP', type=int, required=True, help="number of steps")
-parser.add_argument('--update_interval',metavar='UPDATE-INTERVAL', type=int, required=True)
-parser.add_argument('--minibatch_size',metavar='MBATCH-SIZE', type=int, required=True)
-parser.add_argument('--epochs',metavar='NUM-EPOCH', type=int, required=True, help="number of epochs")
-parser.add_argument('--save_path',metavar='SAVE-PATH', type = str, default=".", help="saving path for model and tokenizer")
+parser.add_argument('--update_interval',metavar='UPDATE-INTERVAL', type=int, required=True, help="number of steps before weights update")
+parser.add_argument('--minibatch_size',metavar='MBATCH-SIZE', type=int, required=True, help="batch size while updating weights")
+parser.add_argument('--epochs',metavar='NUM-EPOCH', type=int, required=True, help="number of epochs per update")
+parser.add_argument('--save_path',metavar='SAVE-PATH', type = str, default=".", help="saving path for RL model")
 
 args = parser.parse_args()
 
