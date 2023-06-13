@@ -8,6 +8,7 @@ Visit Huggingface Model Card -> [Kongfha/KlonSuphap-LM](https://huggingface.co/K
 - [Training Process](#training-process)
 - [Limitation](#limitation)
 - [Usage](#usage)
+    - [Rhyme-Tagging Data](#rhyme-tagging-data)
     - [Fine-Tuning without non-rhyme-related mask](#fine-tuning-without-non-rhyme-related-mask)
     - [Fine-Tuning with non-rhyme-related mask](#fine-tuning-with-non-rhyme-related-mask)
     - [Fine-Tuning using Reinforcement Learning](#fine-tuning-using-reinforcement-learning)
@@ -53,6 +54,12 @@ depiction of Thai Klon-Paed Poems, it still does not adhere to the rules of Thai
 The current training process uses \<s2> and \<es2> tags for inner rhyme (สัมผัสภายในบท) and \<s3> tag for outer rhyme (สัมผัสระหว่างบท). However, the model tends to prioritize learning inner rhyme, likely due to the higher quantity of \<s2> and \<es2> tags compared to \<s3> tags. The reinforcement learning method used in training focuses on generating a single line of a poem, resulting in only one pair of \<s2> and \<es2> tags, potentially overshadowing the significance of \<s3> tags in the model's learning.
 
 ## Usage
+
+#### Rhyme-Tagging Data
+```bash
+python3 tag_data.py --raw_path ./path/to/raw_text.json \
+                    --save_path ./path/to/save
+```
 
 #### Fine-Tuning without non-rhyme-related mask 
 ```bash
