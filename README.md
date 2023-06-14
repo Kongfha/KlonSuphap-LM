@@ -12,6 +12,7 @@ Visit Huggingface Model Card -> [Kongfha/KlonSuphap-LM](https://huggingface.co/K
     - [Fine-Tuning without non-rhyme-related mask](#fine-tuning-without-non-rhyme-related-mask)
     - [Fine-Tuning with non-rhyme-related mask](#fine-tuning-with-non-rhyme-related-mask)
     - [Fine-Tuning using Reinforcement Learning](#fine-tuning-using-reinforcement-learning)
+    - [Testing Model](#testing-model)
     - [Generate Klon-Paed using Pretrained Model](#generate-klon-paed-using-pretrained-model)
 
 ## Introduction
@@ -103,6 +104,17 @@ python3 dump_RL.py  --model ./path/to/model \
                     --tokenizer ./path/to/tokenizer \
                     --rl ./path/to/save/best \
                     --dumpdir ./path/to/save/dumped_model
+```
+
+#### Testing Model
+```bash
+python3 test.py  --input_path ./path/to/test_inputs.json \
+                 --model_path ./path/to/model \
+                 --tokenizer_path ./path/to/tokenizer \
+                 --max_length MAX_LENGTH \
+                 --top_p TOP_P \
+                 --temperature TEMP \
+                 --save_path ./path/to/test_result
 ```
 
 #### Generate Klon-Paed using Pretrained Model

@@ -1,4 +1,4 @@
-python3 test.py  --input_path dataset/test_inputs.json \
+python3 test.py  --input_path ./dataset/test_inputs.json \
                  --model_path Kongfha/KlonSuphap-LM \
                  --tokenizer_path Kongfha/KlonSuphap-LM \
                  --max_length 180 \
