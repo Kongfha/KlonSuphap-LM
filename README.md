@@ -127,7 +127,6 @@ python3 test.py  --input_path ./path/to/test_inputs.json \
 python3 sumpass_eval.py  --test_path ./path/to/test_result.json \
                          --eval_save_path ./path/to/save 
 ```
-Check out test result analysis: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1tBrHo7SuRkUYiMXIFID3DMIIHnD1cY0d?usp=sharing)
 
 #### Generate Klon-Paed using Pretrained Model
 ```python
