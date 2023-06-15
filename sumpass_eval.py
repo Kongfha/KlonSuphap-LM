@@ -71,6 +71,9 @@ def get_score(txt):
     txt_waks = format_str_waks(txt)    
     klon_VowMat, klon_th, fail = format_waks_syl(txt_waks)
 
+    if len(txt_waks) < 8:
+        return "WakNumberFail"
+
     bots_VowMat = [klon_VowMat[0:4], klon_VowMat[4:8]]
     bots_th = [klon_th[0:4], klon_th[4:8]]
 
@@ -111,20 +114,26 @@ if __name__ == "__main__":
     list_df = []
     for klon in tqdm(data):
         cur_row = [klon["input"],klon["output"]]
-        fail_count = [0,0]
+        fail_count = [0,0,0]
         score = [0,0,0,0,0,0,0,0,0]
         repli = [0,0,0,0,0,0,0,0,0]
 
         result = get_score(klon["output"])  
 
-        if result == "WordFail":
+        if result == "WakNumberFail":
             fail_count[0] += 1
+            cur_row.extend(fail_count+score+repli)
+            list_df.append(cur_row)
+            continue
+
+        elif result == "WordFail":
+            fail_count[1] += 1
             cur_row.extend(fail_count+score+repli)
             list_df.append(cur_row)
             continue
             
         elif result == "LengthFail":
-            fail_count[1] += 1
+            fail_count[2] += 1
             cur_row.extend(fail_count+score+repli)
             list_df.append(cur_row)
             continue
@@ -133,7 +142,7 @@ if __name__ == "__main__":
             cur_row.extend(fail_count+result[0]+result[1])
             list_df.append(cur_row)
 
-    columns = ["input", "output", "WordFail", "LenghtFail", "สดับ1-รับ1", "รับ1-รอง1", "รับ1-ส่ง1", "รอง1-ส่ง1", "สดับ2-รับ2", "รับ2-รอง2", "รับ2-ส่ง2", "รอง2-ส่ง2", "ส่ง1-รับ2","ซ้ำสดับ1-รับ1", "ซ้ำรับ1-รอง1", "ซ้ำรับ1-ส่ง1", "ซ้ำรอง1-ส่ง1", "ซ้ำสดับ2-รับ2", "ซ้ำรับ2-รอง2", "ซ้ำรับ2-ส่ง2", "ซ้ำรอง2-ส่ง2", "ซ้ำส่ง1-รับ2"]
+    columns = ["input", "output", "WakNumberFail", "WordFail", "LenghtFail", "สดับ1-รับ1", "รับ1-รอง1", "รับ1-ส่ง1", "รอง1-ส่ง1", "สดับ2-รับ2", "รับ2-รอง2", "รับ2-ส่ง2", "รอง2-ส่ง2", "ส่ง1-รับ2","ซ้ำสดับ1-รับ1", "ซ้ำรับ1-รอง1", "ซ้ำรับ1-ส่ง1", "ซ้ำรอง1-ส่ง1", "ซ้ำสดับ2-รับ2", "ซ้ำรับ2-รอง2", "ซ้ำรับ2-ส่ง2", "ซ้ำรอง2-ส่ง2", "ซ้ำส่ง1-รับ2"]
     df = pd.DataFrame(list_df, columns = columns, dtype = int)
     
     save_path = args.eval_save_path
