@@ -2,6 +2,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 import json
 from tqdm import tqdm
+import os
 
 import argparse
 
@@ -52,7 +53,12 @@ if __name__ == "__main__":
         output_lst.append({"input":input,"output":output})
     
     save_path = args.save_path
-    # I found that in colab when model.generate has been used the json.dump(ensure_ascii=False) will raised error
+
+    isExist = os.path.exists(save_path)
+    if not isExist:
+        os.makedirs(save_path)
+        print(f"The new directory {save_path} is created!")
+
     try:
         file_save_path = save_path+"/test_result.json"
         print(f"Saving result to {file_save_path}")
