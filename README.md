@@ -54,6 +54,11 @@ depiction of Thai Klon-Paed Poems, it still does not adhere to the rules of Thai
 ## Limitation
 The current training process uses \<s2> and \<es2> tags for inner rhyme (สัมผัสภายในบท) and \<s3> tag for outer rhyme (สัมผัสระหว่างบท). However, the model tends to prioritize learning inner rhyme, likely due to the higher quantity of \<s2> and \<es2> tags compared to \<s3> tags. The reinforcement learning method used in training focuses on generating a single line of a poem, resulting in only one pair of \<s2> and \<es2> tags, potentially overshadowing the significance of \<s3> tags in the model's learning.
 
+# Setup
+```bash
+pip install -r requirement.txt
+```
+
 ## Usage
 
 #### Rhyme-Tagging Data
@@ -122,6 +127,7 @@ python3 test.py  --input_path ./path/to/test_inputs.json \
 python3 sumpass_eval.py  --test_path ./path/to/test_result.json \
                          --eval_save_path ./path/to/save 
 ```
+Check out test result analysis: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1tBrHo7SuRkUYiMXIFID3DMIIHnD1cY0d?usp=sharing)
 
 #### Generate Klon-Paed using Pretrained Model
 ```python
