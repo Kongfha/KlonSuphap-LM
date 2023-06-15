@@ -48,8 +48,7 @@ if __name__ == "__main__":
             input_ids_tensor = input_ids_tensor.to(device)
             output = model.generate(input_ids_tensor, max_length = max_length,temperature=temp, top_p=top_p ,pad_token_id=tokenizer.eos_token_id)
             output = tokenizer.decode(output.reshape(-1))
-            if(len(output.split("\n")) > 4):
-                output = output[:output.find(output.split("\n")[4])]
+        output = output[:output.find(output.split("\n")[4])]
         output_lst.append({"input":input,"output":output})
     
     save_path = args.save_path
@@ -57,7 +56,7 @@ if __name__ == "__main__":
     isExist = os.path.exists(save_path)
     if not isExist:
         os.makedirs(save_path)
-        print(f"The new directory {save_path} is created!")
+        print(f"The new directory {save_path} is created")
 
     try:
         file_save_path = save_path+"/test_result.json"
