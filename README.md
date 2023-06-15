@@ -113,8 +113,14 @@ python3 test.py  --input_path ./path/to/test_inputs.json \
                  --tokenizer_path ./path/to/tokenizer \
                  --max_length MAX_LENGTH \
                  --top_p TOP_P \
-                 --temperature TEMP \
+                 --temperature TEMPERATURE \
                  --save_path ./path/to/test_result
+```
+
+#### Rhymes Evaluation
+```bash
+python3 sumpass_eval.py  --test_path ./path/to/test_result.json \
+                         --eval_save_path ./path/to/save 
 ```
 
 #### Generate Klon-Paed using Pretrained Model
