@@ -1,7 +1,7 @@
 # 🌾 KlonSuphap-LM (แต่งกลอนแปด ด้วย GPT-2)
 
 Visit Demo Space -> [Kongfha/KlonSuphap-Generator](https://huggingface.co/spaces/Kongfha/KlonSuphap-Generator) <br>
-Visit Huggingface Model Card -> [Kongfha/KlonSuphap-LM](https://huggingface.co/Kongfha/KlonSuphap-LM)
+Visit Huggingface Model Card -> [Kongfha/KlonSuphap-LM](https://huggingface.co/Kongfha/KlonSuphap-LM) <br>
 Visit Blog (Thai Language) -> [🌾 KlonSuphap-LM แต่งกลอนแปด ด้วย GPT-2](https://medium.com/@kampanatyingseree4704/klonsuphap-lm-%E0%B9%81%E0%B8%95%E0%B9%88%E0%B8%87%E0%B8%81%E0%B8%A5%E0%B8%AD%E0%B8%99%E0%B9%81%E0%B8%9B%E0%B8%94-%E0%B8%94%E0%B9%89%E0%B8%A7%E0%B8%A2-gpt-2-d2baffc80907)
 
 ## Table of Contents
